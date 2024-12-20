@@ -14,6 +14,15 @@
       />
     </template>
   </app-modal>
+  <div>
+    <table>
+      <tr v-for="pet in petData" :key="pet.petID">
+        <td>{{ pet.petID }}</td>
+        <td>{{ pet.createDate }}</td>
+        <td>{{ pet.petCategoryID.petCategoryName }}</td>
+      </tr>
+    </table>
+  </div>
 </template>
 
 <script>
@@ -29,6 +38,7 @@ export default {
   data() {
     return {
       isShowModal: false,
+      petData: [],
     };
   },
   methods: {
@@ -36,6 +46,17 @@ export default {
       console.log("Runningggg...");
       this.isShowModal = !this.isShowModal;
     },
+  },
+  mounted() {
+    fetch("http://localhost:8080/api/pet")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data); // Kiểm tra dữ liệu
+        this.petData = data;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   },
 };
 </script>
