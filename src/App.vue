@@ -1,9 +1,12 @@
 <template>
   <app-header ref="header" />
+  <button @click="onToggleModal">Toggle Modal</button>
   <app-modal
+    v-if="isShowModal"
     title="Chào chuột ngoooooooo"
     content="Còn cái này hay lắm"
-    theme="d"
+    theme="purple"
+    @cancel="onToggleModal"
   />
 </template>
 
@@ -18,8 +21,14 @@ export default {
     AppModal,
   },
   data() {
-    return {};
+    return {
+      isShowModal: false,
+    };
   },
-  methods: {},
+  methods: {
+    onToggleModal() {
+      this.isShowModal = !this.isShowModal;
+    },
+  },
 };
 </script>

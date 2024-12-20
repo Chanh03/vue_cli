@@ -6,6 +6,7 @@
           <h1>{{ title }}</h1>
         </div>
         <div class="modal-body" :class="{ 'bg-purple': theme == 'purple' }">
+          <p>{{ content }}</p>
           <img
             src="https://reviewamthuc.net/wp-content/uploads/2024/04/chuot-nuong-4.jpg"
             alt=""
@@ -13,7 +14,7 @@
         </div>
         <div class="modal-footer">
           <h3>
-            <button>LIKE</button>
+            <button @click="onCloseModal">CLOSE</button>
           </h3>
         </div>
       </div>
@@ -46,25 +47,15 @@ export default {
   data() {
     return {};
   },
+  methods: {
+    onCloseModal() {
+      this.$emit("cancel");
+    },
+  },
 };
 </script>
 <style scoped>
 .bg-purple {
   background: purple;
-}
-.modal {
-  position: fixed;
-  top: 100px;
-  left: 0;
-  z-index: var(--bs-modal-zindex);
-  display: block;
-  width: 100%;
-  height: 100%;
-  overflow-x: hidden;
-  overflow-y: auto;
-  outline: 0;
-}
-.fade {
-  transition: opacity 0.15s linear;
 }
 </style>
