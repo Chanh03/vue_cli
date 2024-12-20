@@ -4,10 +4,16 @@
   <app-modal
     v-if="isShowModal"
     title="Chào chuột ngoooooooo"
-    content="Còn cái này hay lắm"
     theme="purple"
     @cancel="onToggleModal"
-  />
+  >
+    <template v-slot:content>
+      <img
+        src="https://reviewamthuc.net/wp-content/uploads/2024/04/chuot-nuong-4.jpg"
+        alt=""
+      />
+    </template>
+  </app-modal>
 </template>
 
 <script>
@@ -27,6 +33,7 @@ export default {
   },
   methods: {
     onToggleModal() {
+      console.log("Runningggg...");
       this.isShowModal = !this.isShowModal;
     },
   },

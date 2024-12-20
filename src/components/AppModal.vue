@@ -1,16 +1,12 @@
 <template>
-  <div class="modal fade show">
+  <div class="modal fade show" @click="onCloseModal">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <h1>{{ title }}</h1>
         </div>
         <div class="modal-body" :class="{ 'bg-purple': theme == 'purple' }">
-          <p>{{ content }}</p>
-          <img
-            src="https://reviewamthuc.net/wp-content/uploads/2024/04/chuot-nuong-4.jpg"
-            alt=""
-          />
+          <slot name="content" />
         </div>
         <div class="modal-footer">
           <h3>
@@ -27,10 +23,6 @@ export default {
     title: {
       type: String,
       required: true,
-    },
-    content: {
-      type: String,
-      default: "",
     },
     footer: {
       type: String,
